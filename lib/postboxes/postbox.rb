@@ -1,4 +1,5 @@
 module Postboxes
+  # Postbox model class
   class Postbox
     def initialize(latitude, longitude, postalcode, id)
       @latitude = latitude
@@ -6,9 +7,13 @@ module Postboxes
       @postalcode = postalcode
       @id = id
     end
-  
+
     def to_osm
-      "<node id='#{@id}' lat='#{@latitude}' lon='#{@longitude}'><tag k='amenity' v='post_box' /><tag k='postal_code' v='#{@postalcode}' /></node>"
+      # add a indent of 2 spaces
+      "  <node id='#{@id}' lat='#{@latitude}' lon='#{@longitude}'>\n"\
+      "    <tag k='amenity' v='post_box' />\n"\
+      "    <tag k='postal_code' v='#{@postalcode}' />\n"\
+      "  </node>\n"
     end
   end
 end
